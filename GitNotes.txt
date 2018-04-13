@@ -7,6 +7,7 @@
     git config --global user.name "ExampleName"
     git config --global user.email Address@example.com
     git config --global core.editor "search for setup instructions for your preferred text editor"
+    git config -l / --list   // list all configs
 
 // Initiate the git repository
     git init
@@ -37,12 +38,15 @@
     git checkout -- <file>      // Revert a file to what it looked like in the last commit.
 
 // Remotes
+// Log in to another github account, need to first:
+// "Control Panel\User Accounts\Credential Manager" - Windows Credentials - Generic Credentials - remove "git:https://github.com"
     git clone <URL>
     git remote                  // View remotes
         -v                      // View remotes and URLs.
-        show <RemoteName>       // View more information.
+        show <RemoteName>       // View more information; or "git ls-remote <RemoteName>"
         add <RemoteName> <URL>  //
         rename <old> <new>      // Rename.
         rm <RemoteName>         // Remove.
-    git fetch <RemoteName>
     git push <RemoteName> <BranchName>
+    git fetch <RemoteName>
+    git pull <RemoteName>
