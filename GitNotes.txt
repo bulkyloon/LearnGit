@@ -1,0 +1,48 @@
+// Reference: ProGit - 2nd Edition
+
+// Three states:
+// [Working Directory] --(stage: "git add")--> [Staging Area] --(commit: "git commit")--> [Git Directory]
+
+// First-time git setup
+    git config --global user.name "ExampleName"
+    git config --global user.email Address@example.com
+    git config --global core.editor "search for setup instructions for your preferred text editor"
+
+// Initiate the git repository
+    git init
+
+// Checking
+    git status
+        -s / --short    // Simplified output; LeftColumn=StagingArea, RightColumn=WorkingTree; ??=untracked, M=modified, A=added.
+    git log             // Check commit history; may need :q to quit from reading log.
+        -p              // Show the difference introduced in each commit.
+        --stats         // Show some abbreviated stats.
+        -<number>       // Limit the output number.
+        --pretty
+        --graph
+
+// Operations
+    git add <file>              // Begin tracking and stage a file.
+    git commit                  // Commit all staged files.
+        -m "commit message"     //
+        -a                      // Skip staging - add all modified tracked files first and then commit.
+        --amend                 // Replace the last commit with the current one.
+    git rm <file>               // Remove a file.
+        -f                      // Force the removal. Needed if the file to be removed has already been add to index.
+        --cached                // Untrack a file but keep it in the hard-drive.
+    git mv <FileFrom> <FileTo>  // Rename (move) a file; no need to rm <FileFrom> and add <FileTo>.
+
+// Undoing things
+    git reset HEAD <file>       // Unstage a file.
+    git checkout -- <file>      // Revert a file to what it looked like in the last commit.
+
+// Remotes
+    git clone <URL>
+    git remote                  // View remotes
+        -v                      // View remotes and URLs.
+        show <RemoteName>       // View more information.
+        add <RemoteName> <URL>  //
+        rename <old> <new>      // Rename.
+        rm <RemoteName>         // Remove.
+    git fetch <RemoteName>
+    git push <RemoteName> <BranchName>
